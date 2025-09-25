@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  control-plane:
+    build: ./backend/control-plane
+    image: resilo/control-plane:local
+    ports: ['8080:8080']
+  ai-predictor:
+    build: ./ai/predictive
+    image: resilo/ai-predictor:local
+    ports: ['8080:8080']
+    # note: port conflict if running control-plane; run services individually or adjust ports
+  ai-rootcause:
+    build: ./ai/rootcause
+    image: resilo/ai-rootcause:local
+    ports: ['8081:8081']
+  ai-testprio:
+    build: ./ai/testprio
+    image: resilo/ai-testprio:local
+    ports: ['8082:8082']
+  ai-assistant:
+    build: ./ai/assistant
+    image: resilo/ai-assistant:local
+    ports: ['8083:8083']
